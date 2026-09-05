@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
   const slides = [
@@ -81,23 +81,6 @@ export const HeroSection: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30 z-10" />
         </div>
       ))}
-
-      {/* Left / Right Carousel Floating Arrows matching reference */}
-      <button
-        onClick={prevSlide}
-        aria-label="Previous Slide"
-        className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/80 hover:bg-white text-stone-900 flex items-center justify-center shadow-lg transition duration-200 cursor-pointer hover:scale-110 active:scale-95"
-      >
-        <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
-      </button>
-
-      <button
-        onClick={nextSlide}
-        aria-label="Next Slide"
-        className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/80 hover:bg-white text-stone-900 flex items-center justify-center shadow-lg transition duration-200 cursor-pointer hover:scale-110 active:scale-95"
-      >
-        <ChevronRight className="w-6 h-6 stroke-[2.5]" />
-      </button>
 
       {/* Hero Slide Text Overlay Content Container matching reference layout */}
       <div className="relative z-20 max-w-7xl mx-auto px-8 sm:px-12 lg:px-16 w-full h-full flex flex-col justify-center text-left">
