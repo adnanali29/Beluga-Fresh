@@ -1,33 +1,69 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useStore } from '../../context/StoreContext';
 import { ProductSVG } from './ProductSVG';
 import { X, Check, Heart, MessageSquare } from 'lucide-react';
 
 export const QuickViewModal: React.FC = () => {
   const { quickViewProduct, closeQuickView, addToCart, openB2BModal, wishlist, toggleWishlist } = useStore();
+  const [selectedImgIdx, setSelectedImgIdx] = useState(0);
+  const [imgError, setImgError] = useState(false);
 
   if (!quickViewProduct) return null;
 
   const isRubber = quickViewProduct.navCategory === 'rubber';
   const isWish = wishlist.includes(quickViewProduct.id);
+  const images = quickViewProduct.images && quickViewProduct.images.length > 0 ? quickViewProduct.images : [];
 
   return (
     <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
       <div className="relative bg-white border border-stone-200 rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl overflow-hidden my-8 text-stone-900">
         <button
-          onClick={closeQuickView}
+          onClick={() => {
+            setSelectedImgIdx(0);
+            closeQuickView();
+          }}
           className="absolute top-4 right-4 w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 border border-stone-200 flex items-center justify-center text-stone-600 transition"
         >
           <X className="w-5 h-5" />
         </button>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          {/* Image & Thumbnails Section optimized for 1080x1080 */}
           <div className="bg-stone-50 p-4 rounded-2xl border border-stone-200 flex flex-col items-center">
-            <div className="h-64 w-full flex items-center justify-center">
-              <ProductSVG type={quickViewProduct.imageType} />
+            <div className="w-full aspect-square relative rounded-xl bg-white p-2 border border-stone-100 flex items-center justify-center overflow-hidden shadow-inner">
+              {images.length > 0 && !imgError ? (
+                <img
+                  src={images[selectedImgIdx] || images[0]}
+                  alt={quickViewProduct.name}
+                  className="w-full h-full object-contain rounded-lg transition-all duration-300"
+                  onError={() => setImgError(true)}
+                />
+              ) : (
+                <ProductSVG type={quickViewProduct.imageType} />
+              )}
             </div>
+
+            {/* Thumbnail Selector if multiple images exist */}
+            {images.length > 1 && (
+              <div className="flex items-center gap-2 mt-3 overflow-x-auto pb-1">
+                {images.map((img, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSelectedImgIdx(idx)}
+                    className={`w-14 h-14 rounded-lg p-1 border transition-all ${
+                      selectedImgIdx === idx
+                        ? 'border-[#072655] ring-2 ring-[#072655]/20 bg-white scale-105'
+                        : 'border-stone-200 bg-stone-100 hover:border-stone-300'
+                    }`}
+                  >
+                    <img src={img} alt="" className="w-full h-full object-contain rounded" />
+                  </button>
+                ))}
+              </div>
+            )}
+
             <div className="mt-3 flex items-center justify-between text-xs text-stone-500 w-full pt-2 border-t border-stone-200">
               <span>Shelf Life: {quickViewProduct.shelfLife}</span>
               <span className="font-semibold text-[#072655]">Origin: {quickViewProduct.origin}</span>
@@ -40,9 +76,7 @@ export const QuickViewModal: React.FC = () => {
                 {quickViewProduct.badge}
               </span>
               <h2 className="text-2xl font-black text-stone-900 mt-2">{quickViewProduct.name}</h2>
-              {quickViewProduct.regionalName && (
-                <p className="text-sm font-bold text-[#072655]">{quickViewProduct.regionalName}</p>
-              )}
+
               <p className="text-xs text-stone-600 mt-1 leading-relaxed">{quickViewProduct.description}</p>
             </div>
 
@@ -70,7 +104,7 @@ export const QuickViewModal: React.FC = () => {
               </div>
             )}
 
-            {/* Action Row: Inquire CTA taking space on Left, Wishlist Heart button pushed to Far Right */}
+            {/* Action Row */}
             <div className="pt-3 border-t border-stone-200 flex items-center justify-between gap-3">
               {isRubber ? (
                 <button

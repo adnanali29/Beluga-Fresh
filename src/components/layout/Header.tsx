@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useStore } from '../../context/StoreContext';
 import { Heart, Search, Menu, X, ShoppingBag } from 'lucide-react';
@@ -29,20 +28,15 @@ export const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm">
-      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-10 py-3 flex items-center justify-between gap-6 h-20">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-10 py-2.5 flex items-center justify-between gap-6 h-20">
         
-        {/* Left: Logo */}
-        <Link href="/" className="flex items-center select-none shrink-0 group">
-          <div className="relative h-12 sm:h-14 lg:h-16 w-auto flex items-center justify-center">
-            <Image
-              src="/logo-transparent.png"
-              alt="Beluga Fresh Logo"
-              width={200}
-              height={80}
-              className="h-12 sm:h-14 lg:h-16 w-auto object-contain transition duration-300 group-hover:scale-105"
-              priority
-            />
-          </div>
+        {/* Left: Logo - Official Beluga Global Export Logo (Compact & Full Visible) */}
+        <Link href="/" className="flex items-center select-none shrink-0 group py-1">
+          <img
+            src="/beluga-logo-official.png"
+            alt="Beluga Global Export Logo"
+            className="h-11 sm:h-12 lg:h-13 w-auto max-h-14 object-contain transition duration-300 group-hover:scale-105"
+          />
         </Link>
 
         {/* Center: Navigation Links */}
@@ -101,7 +95,7 @@ export const Header: React.FC = () => {
             )}
           </button>
 
-          {/* Header Shop Now / Inquire CTA Button matching Reference */}
+          {/* Header Shop Now Button */}
           <button
             onClick={() => toggleCartDrawer(true)}
             className="hidden sm:flex items-center gap-2 bg-[#072655] hover:bg-[#0b3574] text-white font-bold text-xs px-5 py-2.5 rounded-lg shadow-md transition duration-200 cursor-pointer"

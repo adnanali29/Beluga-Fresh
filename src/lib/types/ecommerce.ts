@@ -24,6 +24,7 @@ export interface Product {
   highlights?: string[];
   ingredients?: string[];
   imageType: string;
+  images: string[];
   origin: string;
   shelfLife: string;
 }

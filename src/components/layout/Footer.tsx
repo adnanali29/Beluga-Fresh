@@ -13,15 +13,11 @@ export const Footer: React.FC = () => {
           {/* Brand Info */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <div className="relative h-10 w-auto">
-                <Image
-                  src="/logo.jpg"
-                  alt="Beluga Fresh Logo"
-                  width={140}
-                  height={40}
-                  className="h-10 w-auto object-contain bg-white p-1 rounded-lg"
-                />
-              </div>
+              <img
+                src="/beluga-logo-official.png"
+                alt="Beluga Global Export Logo"
+                className="h-10 w-auto object-contain bg-white/90 px-2 py-1 rounded-lg"
+              />
             </div>
             <p className="text-xs text-stone-400 leading-relaxed">
               Taste Kerala. Love Natural. Farm-fresh vegetable mixes, single-estate spices, desiccated coconut, and export natural rubber.

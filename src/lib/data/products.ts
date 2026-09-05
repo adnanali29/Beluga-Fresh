@@ -28,6 +28,7 @@ export const PRODUCTS: Product[] = [
       'Perfect for Biryanis, Chai, Payasam, and gourmet baking'
     ],
     imageType: 'spice-cardamom',
+    images: ['/products/Cardamom.webp', '/products/Cardamom 1.webp'],
     origin: 'Idukki High Ranges, Kerala',
     shelfLife: '18 Months'
   },
@@ -50,6 +51,7 @@ export const PRODUCTS: Product[] = [
       'Signature sharp warmth for steaks and traditional rasam'
     ],
     imageType: 'spice-pepper',
+    images: ['/products/Balack pepper.webp', '/products/black pepper 1.webp'],
     origin: 'Wayanad Rainforests, Kerala',
     shelfLife: '24 Months'
   },
@@ -71,6 +73,7 @@ export const PRODUCTS: Product[] = [
       'Essential for Garam Masalas, Kerala Stews, and herbal teas'
     ],
     imageType: 'spice-cloves',
+    images: ['/products/Clove.webp', '/products/Cloves 1.webp'],
     origin: 'Kottayam Spice Canopies, Kerala',
     shelfLife: '24 Months'
   },
@@ -92,6 +95,7 @@ export const PRODUCTS: Product[] = [
       'Naturally sweet aroma, zero synthetic extracts'
     ],
     imageType: 'spice-cinnamon',
+    images: ['/products/Cinnamon stick.webp', '/products/8.webp'],
     origin: 'Malabar Valley, Kerala',
     shelfLife: '24 Months'
   },
@@ -100,7 +104,6 @@ export const PRODUCTS: Product[] = [
   {
     id: 'beluga-mix-avial',
     name: 'Beluga Fresh Avial Mix',
-    regionalName: 'അവിയൽ മിക്സ്',
     navCategory: 'veg-fruits',
     subCategory: 'Ready-to-Cook Mixes',
     tagline: 'Fresh cut vegetables for authentic creamy coconut Avial',
@@ -114,13 +117,13 @@ export const PRODUCTS: Product[] = [
     ingredients: ['Elephant Foot Yam', 'Raw Banana', 'Drumstick', 'Carrot', 'Snake Gourd', 'Ivy Gourd', 'Beans'],
     highlights: ['Washed, cleaned & ready to cook', '100% natural, zero preservatives', 'Saves 40+ minutes of prep'],
     imageType: 'mix-avial',
+    images: ['/products/AVIAL MIX.webp', '/products/AVIAL MIX Curry.webp'],
     origin: 'Central Kerala Farms',
     shelfLife: '5 Days (Chilled)'
   },
   {
     id: 'beluga-mix-sambar',
     name: 'Beluga Fresh Sadhya Sambar Mix',
-    regionalName: 'സദ്യ സാമ്പാർ മിക്സ്',
     navCategory: 'veg-fruits',
     subCategory: 'Ready-to-Cook Mixes',
     tagline: 'Hand-selected farm cuts for aromatic Kerala Sambar',
@@ -134,13 +137,13 @@ export const PRODUCTS: Product[] = [
     ingredients: ['Drumstick', 'Yellow Pumpkin', 'Ash Gourd', 'Shallots', 'Carrot', 'Tomato'],
     highlights: ['Cut fresh daily from morning harvests', 'Rich in natural fiber and vitamins'],
     imageType: 'mix-sambar',
+    images: ['/products/SADHYA.webp', '/products/SADHYA CURRY.webp'],
     origin: 'Palakkad Vegetable Belts, Kerala',
     shelfLife: '5 Days (Chilled)'
   },
   {
     id: 'beluga-mix-thooran',
     name: 'Beluga Fresh Thooran Mix',
-    regionalName: 'തോരൻ മിക്സ്',
     navCategory: 'veg-fruits',
     subCategory: 'Ready-to-Cook Mixes',
     tagline: 'Finely minced garden-fresh vegetables for crunchy stir-fry',
@@ -154,13 +157,13 @@ export const PRODUCTS: Product[] = [
     ingredients: ['French Beans', 'Carrot Minced', 'Green Cabbage', 'Green Chillies'],
     highlights: ['Consistent fine-cut precision', 'Crisp texture retention without excess water'],
     imageType: 'mix-thooran',
+    images: ['/products/THOORAN.webp', '/products/THOORAN CURRY.webp'],
     origin: 'Wayanad Hill Farms',
     shelfLife: '5 Days (Chilled)'
   },
   {
     id: 'beluga-mix-kalan',
     name: 'Beluga Fresh Kalan Mix',
-    regionalName: 'കാളൻ മിക്സ്',
     navCategory: 'veg-fruits',
     subCategory: 'Ready-to-Cook Mixes',
     tagline: 'Traditional diced Yam & Plantain for thick yogurt curry',
@@ -174,13 +177,13 @@ export const PRODUCTS: Product[] = [
     ingredients: ['Peeled Chena (Yam)', 'Ethakkaya (Raw Banana)', 'Crushed Black Pepper'],
     highlights: ['Pre-treated to prevent natural irritation', 'Signature festival delicacy'],
     imageType: 'mix-kalan',
+    images: ['/products/KALAN.webp', '/products/KALAN curry.webp'],
     origin: 'Kottayam & Idukki Farms',
     shelfLife: '5 Days (Chilled)'
   },
   {
     id: 'beluga-mix-olan',
     name: 'Beluga Fresh Olan Mix',
-    regionalName: 'ഓലൻ മിക്സ്',
     navCategory: 'veg-fruits',
     subCategory: 'Ready-to-Cook Mixes',
     tagline: 'Mild, comforting White Ash Gourd & Red Cowpeas',
@@ -194,6 +197,7 @@ export const PRODUCTS: Product[] = [
     ingredients: ['Ash Gourd (Kumbalanga)', 'Hydrated Red Cowpeas (Vanpayar)', 'Green Chillies'],
     highlights: ['Naturally cooling on digestion', 'Pre-hydrated cowpeas require zero overnight soaking'],
     imageType: 'mix-olan',
+    images: ['/products/OLAN.webp', '/products/OLAN curry.webp'],
     origin: 'Thrissur Farms, Kerala',
     shelfLife: '5 Days (Chilled)'
   },
@@ -212,6 +216,7 @@ export const PRODUCTS: Product[] = [
     description: 'Carefully selected mature Kerala coconuts, hygienically grated and sun-dried to lock in rich aroma, natural sweetness, and dietary fiber.',
     highlights: ['Freshly dried with zero chemical preservatives', 'Moisture-shield resealable zipper pouch'],
     imageType: 'coconut-pouch',
+    images: ['/products/Coconut 1.webp'],
     origin: 'Kozhikode & Malabar Groves',
     shelfLife: '12 Months'
   },
@@ -230,6 +235,7 @@ export const PRODUCTS: Product[] = [
     description: 'Premium desiccated coconut packaged in an eco-friendly rigid box with an inner vacuum barrier pack for home baking and international kitchens.',
     highlights: ['Zero added sugar or bleaching agents', 'Uniform medium-fine cut flakes'],
     imageType: 'coconut-box',
+    images: ['/products/Coconut box.webp'],
     origin: 'Malabar Coast, Kerala',
     shelfLife: '12 Months'
   },
@@ -248,6 +254,7 @@ export const PRODUCTS: Product[] = [
     description: 'Rich in potassium and heart-healthy monounsaturated fats. Grown in the mist-clad organic hill estates of Wayanad.',
     highlights: ['Tree-ripened buttery texture', 'Pesticide-free certified'],
     imageType: 'produce-avocado',
+    images: ['/products/Avocado.webp'],
     origin: 'Wayanad Estates, Kerala',
     shelfLife: '5-7 Days'
   },
@@ -266,6 +273,7 @@ export const PRODUCTS: Product[] = [
     description: 'World famous Vazhakulam "Kannara" pineapples known for their enticing aroma, golden color, and exceptionally sweet non-fibrous flesh.',
     highlights: ['Geographical Indication (GI) Certified', 'Honey sweet flavor'],
     imageType: 'produce-pineapple',
+    images: ['/products/Pineapple.webp'],
     origin: 'Vazhakulam, Kerala',
     shelfLife: '7 Days'
   },
@@ -284,6 +292,7 @@ export const PRODUCTS: Product[] = [
     description: 'Grown organically using vermicompost. High fragrance essential oil concentration that elevates tadkas, sambars, and chutneys.',
     highlights: ['Intensely aromatic dark green leaves', 'Packed in moisture-lock wrap'],
     imageType: 'produce-curryleaves',
+    images: ['/products/Curry leaves.webp'],
     origin: 'Kottayam Organic Farms',
     shelfLife: '7 Days'
   },
@@ -302,8 +311,123 @@ export const PRODUCTS: Product[] = [
     description: 'Supple, glossy green plantain dining leaves washed and neatly rolled. Ideal for serving Onam Sadya or wrapping Meen Pollichathu.',
     highlights: ['Pre-washed & trimmed ready to serve', '100% biodegradable dining surface'],
     imageType: 'produce-bananaleaves',
+    images: ['/products/banana Leave.webp'],
     origin: 'Alappuzha Waterways, Kerala',
     shelfLife: '6 Days'
+  },
+  {
+    id: 'beluga-fruit-dragonfruit',
+    name: 'Beluga Fresh Pink Dragon Fruit',
+    navCategory: 'veg-fruits',
+    subCategory: 'Fresh Fruits',
+    tagline: 'Farm-Fresh Red Pitaya • Antioxidant-Rich Sweet Red Flesh',
+    brand: 'BELUGA FRESH',
+    priceINR: 160,
+    rating: 4.9,
+    reviewsCount: 112,
+    weight: '500g (2 Fruits)',
+    badge: 'Exotic Harvest',
+    description: 'Naturally grown in the sunny orchard belts of Palakkad and Malabar. Juicy red-fleshed dragon fruit rich in Vitamin C, iron, and dietary fiber.',
+    highlights: ['100% Organically cultivated', 'Antioxidant & fiber rich', 'Picked fresh upon order'],
+    imageType: 'produce-dragonfruit',
+    images: ['/products/Dragon fruit.webp'],
+    origin: 'Palakkad Orchards, Kerala',
+    shelfLife: '7 Days'
+  },
+  {
+    id: 'beluga-fruit-mango',
+    name: 'Beluga Fresh Malgova & Alphonso Mangoes',
+    navCategory: 'veg-fruits',
+    subCategory: 'Fresh Fruits',
+    tagline: 'Tree-Ripened Premium Sweet Kerala Mangoes',
+    brand: 'BELUGA FRESH',
+    priceINR: 220,
+    rating: 5.0,
+    reviewsCount: 310,
+    weight: '1kg Pack',
+    badge: 'Tree Ripened',
+    description: 'Naturally tree-ripened heritage Malgova and Alphonso mangoes from Muthalamada mango country in Palakkad. Zero carbide treatment.',
+    highlights: ['Naturally tree-ripened without chemicals', 'Rich honey sweetness and fiber-free pulp', 'Handpicked from vintage orchards'],
+    imageType: 'produce-mango',
+    images: ['/products/Mango.webp'],
+    origin: 'Muthalamada, Palakkad, Kerala',
+    shelfLife: '5-7 Days'
+  },
+  {
+    id: 'beluga-fruit-ramboutan',
+    name: 'Beluga Fresh Red Ramboutan',
+    navCategory: 'veg-fruits',
+    subCategory: 'Fresh Fruits',
+    tagline: 'Juicy Exotic Tropical Fruit from Central Kerala Orchards',
+    brand: 'BELUGA FRESH',
+    priceINR: 240,
+    rating: 4.9,
+    reviewsCount: 185,
+    weight: '500g Pack',
+    badge: 'Exotic Delight',
+    description: 'Juicy, sweet, and aromatic red ramboutan harvested from high-yield orchards of Pathanamthitta and Kottayam.',
+    highlights: ['Extra juicy sweet translucent pulp', 'Pesticide-free orchard harvest', 'Rich in Vitamin C and natural sugars'],
+    imageType: 'produce-ramboutan',
+    images: ['/products/Roumboton.webp'],
+    origin: 'Pathanamthitta & Kottayam, Kerala',
+    shelfLife: '5 Days'
+  },
+  {
+    id: 'beluga-veg-onion',
+    name: 'Beluga Fresh Small Shallots (Sambar Onion)',
+    navCategory: 'veg-fruits',
+    subCategory: 'Vegetables & Greens',
+    tagline: 'Single-Origin Red Shallots for Authentic Kerala Curries',
+    brand: 'BELUGA FRESH',
+    priceINR: 85,
+    rating: 4.8,
+    reviewsCount: 275,
+    weight: '500g',
+    badge: 'Daily Staple',
+    description: 'Pungent, nutrient-dense small red shallots essential for Kerala Tadka, Meen Curry, Sambar, and traditional chammanti.',
+    highlights: ['Intense aroma and rich natural sweetness', 'Hand-graded dry outer skin', 'Essential staple for South Indian cooking'],
+    imageType: 'produce-onion',
+    images: ['/products/Onion.webp'],
+    origin: 'Palakkad Farm Belts, Kerala',
+    shelfLife: '30 Days'
+  },
+  {
+    id: 'beluga-fruit-banana',
+    name: 'Beluga Fresh Organic Nendran & Red Banana',
+    navCategory: 'veg-fruits',
+    subCategory: 'Fresh Fruits',
+    tagline: 'GI Tagged Chengazhikodan Nendran & Sweet Red Bananas',
+    brand: 'BELUGA FRESH',
+    priceINR: 110,
+    rating: 5.0,
+    reviewsCount: 390,
+    weight: '1kg Cluster',
+    badge: 'Heritage Fruit',
+    description: 'Iconic GI-tagged Chengazhikodan Nendran plantain bananas and sweet Red Bananas (Chovva Pazham). Rich in iron, energy, and natural flavor.',
+    highlights: ['GI Tagged authentic Kerala heritage variety', 'Perfect for Pazham Pori, steaming, or baby food', '100% naturally ripened on plantains'],
+    imageType: 'produce-banana',
+    images: ['/products/banana.webp'],
+    origin: 'Thrissur & Wayanad, Kerala',
+    shelfLife: '5-6 Days'
+  },
+  {
+    id: 'beluga-veg-freshveg',
+    name: 'Beluga Fresh Farm Vegetable Basket',
+    navCategory: 'veg-fruits',
+    subCategory: 'Vegetables & Greens',
+    tagline: 'Handpicked Daily Basket • Yam, Plantain, Pumpkin & Chillies',
+    brand: 'BELUGA FRESH',
+    priceINR: 299,
+    rating: 4.9,
+    reviewsCount: 410,
+    weight: '3kg Farm Basket',
+    badge: 'Farm Pick',
+    description: 'Curated assortment of farm-fresh Kerala vegetables including Elephant Foot Yam (Chena), Raw Banana (Ethakkaya), Ash Gourd, Snake Gourd, Green Chillies, and Drumsticks.',
+    highlights: ['Harvested early morning directly from farms', 'Triple RO water jet washed', 'No chemical sprays or wax coatings'],
+    imageType: 'produce-freshveg',
+    images: ['/products/vegetables.webp'],
+    origin: 'Palakkad & Wayanad Collective Farms',
+    shelfLife: '7 Days'
   },
 
   // 3. RUBBER
@@ -322,6 +446,7 @@ export const PRODUCTS: Product[] = [
     description: 'Meticulously tapped from high-yielding rubber plantations in Kottayam and Palakkad. Ribbed and smoke-cured to international Green Book RSS 3 specifications.',
     highlights: ['Superior elasticity and tensile strength', 'Indian Rubber Board certified', 'Available for FCL / LCL shipments from Cochin Port'],
     imageType: 'rubber-rss3',
+    images: ['/products/RSS 3.webp'],
     origin: 'Kottayam Rubber Estates, Kerala',
     shelfLife: 'Dry storage indefinite'
   },
@@ -340,6 +465,7 @@ export const PRODUCTS: Product[] = [
     description: 'Reliable, highly resilient RSS 4 grade ribbed smoked sheets. Outstanding resistance to abrasion and tearing for molded automotive components and footwear soles.',
     highlights: ['Strong polymer crosslink capability', 'Eco-friendly biodegradable natural polymer'],
     imageType: 'rubber-rss4',
+    images: ['/products/RSS 4.webp'],
     origin: 'Palakkad & Pathanamthitta, Kerala',
     shelfLife: 'Dry storage indefinite'
   }
