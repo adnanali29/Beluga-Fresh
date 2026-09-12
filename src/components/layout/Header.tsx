@@ -27,15 +27,15 @@ export const Header: React.FC = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm">
-      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-10 py-2.5 flex items-center justify-between gap-6 h-20">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-md transition-all">
+      <div className="max-w-[1920px] mx-auto px-3 sm:px-6 lg:px-10 py-2 flex items-center justify-between gap-3 sm:gap-6 h-32 sm:h-36 lg:h-36">
         
-        {/* Left: Logo - Official Beluga Global Export Logo (Compact & Full Visible) */}
+        {/* Left: Logo - Official Beluga Global Export Logo (Massive & Prominent on PC & Mobile) */}
         <Link href="/" className="flex items-center select-none shrink-0 group py-1">
           <img
             src="/beluga-logo-official.png"
             alt="Beluga Global Export Logo"
-            className="h-11 sm:h-12 lg:h-13 w-auto max-h-14 object-contain transition duration-300 group-hover:scale-105"
+            className="h-26 sm:h-30 lg:h-32 w-auto max-h-34 object-contain transition duration-300 group-hover:scale-105 drop-shadow-sm"
           />
         </Link>
 
