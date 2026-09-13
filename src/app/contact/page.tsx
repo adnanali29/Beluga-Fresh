@@ -48,24 +48,31 @@ export default function ContactPage() {
             <div className="flex items-start gap-3">
               <MapPin className="w-5 h-5 text-sky-300 shrink-0 mt-0.5" />
               <div>
-                <p className="font-bold text-white">Registered Processing Facility:</p>
-                <p className="text-blue-200 mt-0.5">Beluga Agro & Natural Products Ltd, Rubber Board Complex Road, Kottayam, Kerala 686002, India</p>
+                <p className="font-bold text-white">Office & Processing Unit Address:</p>
+                <p className="text-blue-200 mt-0.5">Koratty, Nalukettu po, Thrissur, Kerala</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <Phone className="w-5 h-5 text-sky-300 shrink-0" />
+            <div className="flex items-start gap-3">
+              <Phone className="w-5 h-5 text-sky-300 shrink-0 mt-0.5" />
               <div>
-                <p className="font-bold text-white">Telephone & WhatsApp:</p>
-                <p className="text-blue-200 mt-0.5">+91 481 258 4400 / +91 94470 12345</p>
+                <p className="font-bold text-white">Telephone & WhatsApp Support:</p>
+                <p className="text-blue-200 mt-0.5">
+                  <span className="font-semibold text-white">India:</span> +91 9567069814<br />
+                  <span className="font-semibold text-white">UAE:</span> +971 562784277
+                </p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <Mail className="w-5 h-5 text-sky-300 shrink-0" />
+            <div className="flex items-start gap-3">
+              <Mail className="w-5 h-5 text-sky-300 shrink-0 mt-0.5" />
               <div>
-                <p className="font-bold text-white">Email Addresses:</p>
-                <p className="text-blue-200 mt-0.5">hello@belugafresh.com (Retail)<br />export@belugapure.com (B2B Export)</p>
+                <p className="font-bold text-white">Official Email Address:</p>
+                <p className="text-blue-200 mt-0.5">
+                  <a href="mailto:belugaglobalexports@gmail.com" className="hover:underline text-sky-300">
+                    belugaglobalexports@gmail.com
+                  </a>
+                </p>
               </div>
             </div>
           </div>

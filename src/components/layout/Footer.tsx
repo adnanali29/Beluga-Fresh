@@ -53,10 +53,17 @@ export const Footer: React.FC = () => {
 
           {/* Contact Details */}
           <div className="space-y-2">
-            <h4 className="text-white font-bold text-sm mb-3">Kerala Office</h4>
-            <p className="text-stone-300">Rubber Board Complex Road, Kottayam, Kerala 686002, India</p>
-            <p className="text-stone-300">+91 481 258 4400</p>
-            <p className="text-stone-300">hello@belugafresh.com</p>
+            <h4 className="text-white font-bold text-sm mb-3">Kerala Office & Export Desk</h4>
+            <p className="text-stone-300 leading-relaxed">Koratty, Nalukettu po, Thrissur, Kerala</p>
+            <div className="space-y-1 text-stone-300">
+              <p><span className="text-stone-400 font-medium">India:</span> +91 9567069814</p>
+              <p><span className="text-stone-400 font-medium">UAE:</span> +971 562784277</p>
+            </div>
+            <p className="text-sky-400 font-medium pt-1">
+              <a href="mailto:belugaglobalexports@gmail.com" className="hover:underline">
+                belugaglobalexports@gmail.com
+              </a>
+            </p>
           </div>
 
         </div>
