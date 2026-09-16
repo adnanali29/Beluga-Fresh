@@ -65,9 +65,9 @@ export const ProductSVG: React.FC<ProductSVGProps> = ({ type }) => {
   }
 
   if (type.startsWith('spice-')) {
-    const title = type === 'spice-cardamom' ? 'CARDAMOM' : type === 'spice-pepper' ? 'BLACK PEPPER' : type === 'spice-cloves' ? 'CLOVES' : 'CINNAMON';
-    const bot = type === 'spice-cardamom' ? '#166534' : type === 'spice-pepper' ? '#27272a' : type === 'spice-cloves' ? '#581c87' : '#9a3412';
-    const fill = type === 'spice-cardamom' ? '#65a30d' : type === 'spice-pepper' ? '#18181b' : type === 'spice-cloves' ? '#78350f' : '#b45309';
+    const title = type === 'spice-cardamom' ? 'CARDAMOM' : type === 'spice-pepper' ? 'BLACK PEPPER' : type === 'spice-cloves' ? 'CLOVES' : type === 'spice-coffee' ? 'COFFEE BEANS' : 'CINNAMON';
+    const bot = type === 'spice-cardamom' ? '#166534' : type === 'spice-pepper' ? '#27272a' : type === 'spice-cloves' ? '#581c87' : type === 'spice-coffee' ? '#451a03' : '#9a3412';
+    const fill = type === 'spice-cardamom' ? '#65a30d' : type === 'spice-pepper' ? '#18181b' : type === 'spice-cloves' ? '#78350f' : type === 'spice-coffee' ? '#78350f' : '#b45309';
 
     return (
       <svg viewBox="0 0 200 240" className="h-44 w-auto drop-shadow-md">

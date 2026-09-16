@@ -99,6 +99,29 @@ export const PRODUCTS: Product[] = [
     origin: 'Malabar Valley, Kerala',
     shelfLife: '24 Months'
   },
+  {
+    id: 'beluga-spice-coffee',
+    name: 'Beluga Pure Wayanad Coffee Beans',
+    navCategory: 'spices',
+    subCategory: 'Whole Spices',
+    tagline: 'Single-Estate Roasted Coffee Beans • Rich Dark Chocolate Notes',
+    brand: 'BELUGA PURE',
+    priceINR: 280,
+    rating: 4.9,
+    reviewsCount: 156,
+    weight: '250g',
+    badge: 'Shade Grown',
+    description: 'Hand-picked shade-grown Arabica & Robusta coffee beans from the misty high elevation estates of Wayanad, Kerala. Perfectly roasted to bring out deep cocoa, caramel, and spicy aromatic notes.',
+    highlights: [
+      '100% Single-Estate Shade-Grown Beans',
+      'Rich dark chocolate, caramel & subtle spice notes',
+      'Perfect for South Indian Filter Coffee, Espresso & French Press'
+    ],
+    imageType: 'spice-coffee',
+    images: ['/products/Coffee.webp', '/products/Coffee 2.webp'],
+    origin: 'Wayanad High Ranges, Kerala',
+    shelfLife: '12 Months'
+  },
 
   // 2. VEGETABLES & FRUITS
   {
