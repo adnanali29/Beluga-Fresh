@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useStore } from '../../context/StoreContext';
@@ -13,7 +13,9 @@ import {
   TestimonialItem,
   FaqItem,
   PageBannerConfig,
-  AboutPillar
+  AboutPillar,
+  AboutContent,
+  ContactContent
 } from '../../lib/types/ecommerce';
 import {
   Lock,
