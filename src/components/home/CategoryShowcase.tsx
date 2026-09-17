@@ -4,46 +4,17 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Sparkles, Leaf, Factory, Flame, ChevronRight } from 'lucide-react';
+import { useStore } from '../../context/StoreContext';
 
 export const CategoryShowcase: React.FC = () => {
-  const categories = [
-    {
-      href: '/spices',
-      brandTag: 'Beluga Pure Spices',
-      brandColor: 'bg-amber-100/90 text-amber-900 border-amber-300/60',
-      accentColor: 'from-amber-500 to-orange-600',
-      title: 'Spices',
-      badge: '4 Export Spices',
-      image: '/category_spices.jpg',
-      icon: Flame,
-      description: 'Handpicked 8mm+ Green Cardamom, Malabar Bold Garbled Black Pepper, Whole Cloves with crowns, and Ceylon Cinnamon Sticks.',
-      cta: 'View 4 Pure Spices',
-    },
-    {
-      href: '/veg-fruits',
-      brandTag: 'Beluga Fresh',
-      brandColor: 'bg-emerald-100/90 text-emerald-900 border-emerald-300/60',
-      accentColor: 'from-emerald-500 to-teal-600',
-      title: 'Vegetables & Fruits',
-      badge: '11 Fresh Produce Cuts',
-      image: '/category_veg.jpg',
-      icon: Leaf,
-      description: 'Pre-cut Kerala Veg Mixes (Avial, Sambar, Thooran, Kalan, Olan), Desiccated Coconut, Butter Avocados, Rambutan, and Fresh Banana Leaves.',
-      cta: 'View 11 Fresh Items',
-    },
-    {
-      href: '/rubber',
-      brandTag: 'Beluga Industrial',
-      brandColor: 'bg-blue-100/90 text-[#072655] border-blue-300/60',
-      accentColor: 'from-blue-600 to-[#072655]',
-      title: 'Natural Rubber',
-      badge: 'RSS 3 & RSS 4 Grades',
-      image: '/category_rubber.jpg',
-      icon: Factory,
-      description: 'RSS 3 & RSS 4 grade ribbed smoked sheets from Kerala plantations. High tensile strength for automotive and engineering polymers.',
-      cta: 'View Rubber Specs & RFQ',
-    },
-  ];
+  const { categoryCards } = useStore();
+  const categories = categoryCards;
+
+  const getIcon = (title: string) => {
+    if (title.toLowerCase().includes('spice')) return Flame;
+    if (title.toLowerCase().includes('rubber')) return Factory;
+    return Leaf;
+  };
 
   return (
     <section className="py-14 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,7 +36,7 @@ export const CategoryShowcase: React.FC = () => {
       {/* 3 Interactive Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
         {categories.map((item, idx) => {
-          const IconComp = item.icon;
+          const IconComp = getIcon(item.title);
           return (
             <Link
               key={idx}

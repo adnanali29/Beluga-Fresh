@@ -3,31 +3,11 @@
 import React, { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
+import { useStore } from '../../context/StoreContext';
+
 export const FaqSection: React.FC = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
-
-  const faqs = [
-    {
-      question: 'How do I place an inquiry or request pricing for bulk orders?',
-      answer: 'Simply click the "Inquire" button on any product card or use the "Enquiry" button in the top navigation bar. Select your items and submit your contact details. Our Kerala sales desk will review your request and reply via WhatsApp or Email within 2 hours with customized wholesale quotes.'
-    },
-    {
-      question: 'What is the shelf life of Beluga Fresh ready-to-cook vegetable mixes?',
-      answer: 'Our pre-cleaned and sliced Kerala sadya mixes are triple-washed in RO water and vacuum-sealed under 4°C chilled cold-chain controls. Unopened packs retain farm freshness for up to 5 days under standard refrigeration without any added chemical preservatives.'
-    },
-    {
-      question: 'What export Incoterms and sea ports do you support for Natural Rubber (RSS 3 & 4)?',
-      answer: 'We export RSS 3 and RSS 4 grade Ribbed Smoked Sheets in 100kg bales or 20MT FCL containers directly from Cochin Port (COK), Kerala. We support both FOB Cochin and CIF sea port destination terms with full Indian Rubber Board inspection certificates.'
-    },
-    {
-      question: 'Are Beluga Pure Spices 100% natural without artificial green polish?',
-      answer: 'Yes! Our Idukki 8mm+ Green Cardamom and Tellicherry Black Pepper are 100% sun-dried and hand-sorted. We guarantee zero mineral oil polish, zero artificial green coloring dye, and zero synthetic aroma extracts.'
-    },
-    {
-      question: 'Do you offer direct supply for restaurants, catering services, and supermarkets?',
-      answer: 'Absolutely. We supply daily fresh pre-cut vegetable mixes, desiccated coconut cartons, and bulk spice bags to commercial hotels, wedding caterers, and retail grocery stores across India and GCC markets.'
-    }
-  ];
+  const { faqs } = useStore();
 
   const toggleFaq = (idx: number) => {
     setOpenIdx(openIdx === idx ? null : idx);

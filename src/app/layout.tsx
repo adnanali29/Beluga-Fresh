@@ -2,14 +2,7 @@ import type { Metadata } from 'next';
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import { StoreProvider } from '../context/StoreContext';
-import { Header } from '../components/layout/Header';
-import { Footer } from '../components/layout/Footer';
-import { CartDrawer } from '../components/ecommerce/CartDrawer';
-import { WishlistDrawer } from '../components/ecommerce/WishlistDrawer';
-import { QuickViewModal } from '../components/ecommerce/QuickViewModal';
-import { EnquiryModal } from '../components/ecommerce/EnquiryModal';
-import { B2BExportModal } from '../components/ecommerce/B2BExportModal';
-import { ToastNotification } from '../components/layout/ToastNotification';
+import { LayoutWrapper } from '../components/layout/LayoutWrapper';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -41,17 +34,7 @@ export default function RootLayout({
     <html lang="en" className={plusJakartaSans.className}>
       <body className="bg-white text-stone-900 antialiased selection:bg-emerald-600 selection:text-white flex flex-col min-h-screen">
         <StoreProvider>
-          <ToastNotification />
-          <Header />
-          <main className="flex-1 bg-stone-50/50">
-            {children}
-          </main>
-          <Footer />
-          <CartDrawer />
-          <WishlistDrawer />
-          <QuickViewModal />
-          <EnquiryModal />
-          <B2BExportModal />
+          <LayoutWrapper>{children}</LayoutWrapper>
         </StoreProvider>
       </body>
     </html>

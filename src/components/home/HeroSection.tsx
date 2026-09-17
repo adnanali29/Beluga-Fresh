@@ -5,37 +5,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { MessageCircle } from 'lucide-react';
 
+import { useStore } from '../../context/StoreContext';
+
 export const HeroSection: React.FC = () => {
-  const slides = [
+  const { heroSlides } = useStore();
+  const slides = heroSlides.length > 0 ? heroSlides : [
     {
-      id: 1,
-      tag: '100% PURE KERALA PRODUCE • DIRECT FARM HARVEST',
+      id: 'default',
+      tag: '100% PURE KERALA PRODUCE',
       title: 'Taste Kerala. Love Natural.',
-      highlightTitle: 'Love Natural.',
-      description: 'Pre-cleaned Ready-to-Cook Sadya Vegetable Mixes, single-origin Beluga Pure Spices, desiccated coconut, exotic farm fruits, and certified Natural Rubber RSS Grades.',
+      description: 'Pre-cleaned Ready-to-Cook Sadya Vegetable Mixes & Spices',
       image: '/hero-banner-1920x910.jpg',
       ctaText: 'SHOP NOW',
       ctaLink: '/spices'
-    },
-    {
-      id: 2,
-      tag: 'IDUKKI & WAYANAD ESTATES • 8MM+ BOLD PODS',
-      title: 'Pure Single-Estate Spices',
-      highlightTitle: 'Pure Single-Estate Spices',
-      description: 'Handpicked 8mm+ Green Cardamom, Malabar Bold Garbled Black Pepper, Whole Cloves with crowns, and Ceylon Cinnamon Sticks. 100% chemical polish free.',
-      image: '/hero-slide-spices.jpg',
-      ctaText: 'EXPLORE SPICES',
-      ctaLink: '/spices'
-    },
-    {
-      id: 3,
-      tag: 'FRESH PRE-CUT VEGETABLE MIXES • TRIPLE RO WASHED',
-      title: 'Ready-to-Cook Sadya Mixes',
-      highlightTitle: 'Sadya Mixes',
-      description: 'Kerala Avial, Sambar, Thooran, Kalan, and Olan pre-washed vegetable cuts packaged under 4°C cold-chain controls without artificial preservatives.',
-      image: '/hero-slide-veg.jpg',
-      ctaText: 'EXPLORE VEG MIXES',
-      ctaLink: '/veg-fruits'
     }
   ];
 

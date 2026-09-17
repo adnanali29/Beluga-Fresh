@@ -5,7 +5,22 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Sparkles, ArrowRight, ShieldCheck, HeartHandshake, Globe2, Leaf, MapPin, CheckCircle2 } from 'lucide-react';
 
+import { useStore } from '../../context/StoreContext';
+
 export const BrandingSection: React.FC = () => {
+  const { promiseItems } = useStore();
+
+  const getIcon = (name: string) => {
+    switch (name) {
+      case 'HeartHandshake':
+        return <HeartHandshake className="w-4.5 h-4.5" />;
+      case 'Globe2':
+        return <Globe2 className="w-4.5 h-4.5" />;
+      default:
+        return <ShieldCheck className="w-4.5 h-4.5" />;
+    }
+  };
+
   return (
     <section className="py-10 sm:py-12 bg-gradient-to-b from-stone-50 via-emerald-50/20 to-stone-50 border-b border-stone-200/80 relative overflow-hidden">
       {/* Background Organic Ambient Glows */}
@@ -46,49 +61,24 @@ export const BrandingSection: React.FC = () => {
 
             {/* Feature Cards - Compact Organic Design */}
             <div className="space-y-2.5 pt-1">
-              
-              <div className="group bg-white/80 backdrop-blur-xs p-3 rounded-xl border border-stone-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 transition-all duration-300 flex items-start gap-3">
-                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-100 to-teal-50 text-emerald-800 flex items-center justify-center shrink-0 border border-emerald-200/60 group-hover:scale-105 transition-transform mt-0.5">
-                  <ShieldCheck className="w-4.5 h-4.5" />
+              {promiseItems.map(item => (
+                <div
+                  key={item.id}
+                  className="group bg-white/80 backdrop-blur-xs p-3 rounded-xl border border-stone-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 transition-all duration-300 flex items-start gap-3"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-100 to-teal-50 text-emerald-800 flex items-center justify-center shrink-0 border border-emerald-200/60 group-hover:scale-105 transition-transform mt-0.5">
+                    {getIcon(item.iconName)}
+                  </div>
+                  <div>
+                    <h4 className="font-extrabold text-stone-900 text-xs sm:text-sm group-hover:text-emerald-950 transition-colors">
+                      {item.title}
+                    </h4>
+                    <p className="text-[11px] sm:text-xs text-stone-500 mt-0.5 leading-normal">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-extrabold text-stone-900 text-xs sm:text-sm group-hover:text-emerald-950 transition-colors">
-                    100% Adulteration-Free Guarantee
-                  </h4>
-                  <p className="text-[11px] sm:text-xs text-stone-500 mt-0.5 leading-normal">
-                    Zero added artificial colors, mineral oils, or chemical glazes on whole spices &amp; fresh cuts.
-                  </p>
-                </div>
-              </div>
-
-              <div className="group bg-white/80 backdrop-blur-xs p-3 rounded-xl border border-stone-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 transition-all duration-300 flex items-start gap-3">
-                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-amber-100 to-orange-50 text-amber-800 flex items-center justify-center shrink-0 border border-amber-200/60 group-hover:scale-105 transition-transform mt-0.5">
-                  <HeartHandshake className="w-4.5 h-4.5" />
-                </div>
-                <div>
-                  <h4 className="font-extrabold text-stone-900 text-xs sm:text-sm group-hover:text-amber-950 transition-colors">
-                    Direct Fair-Trade Farm Pricing
-                  </h4>
-                  <p className="text-[11px] sm:text-xs text-stone-500 mt-0.5 leading-normal">
-                    Ensuring sustainable livelihoods and premium income for traditional Kerala farming families.
-                  </p>
-                </div>
-              </div>
-
-              <div className="group bg-white/80 backdrop-blur-xs p-3 rounded-xl border border-stone-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 transition-all duration-300 flex items-start gap-3">
-                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-100 to-sky-50 text-[#072655] flex items-center justify-center shrink-0 border border-blue-200/60 group-hover:scale-105 transition-transform mt-0.5">
-                  <Globe2 className="w-4.5 h-4.5" />
-                </div>
-                <div>
-                  <h4 className="font-extrabold text-stone-900 text-xs sm:text-sm group-hover:text-[#072655] transition-colors">
-                    Global Export Standard Compliance
-                  </h4>
-                  <p className="text-[11px] sm:text-xs text-stone-500 mt-0.5 leading-normal">
-                    Strict FSSAI and Rubber Board certification for international container export shipments.
-                  </p>
-                </div>
-              </div>
-
+              ))}
             </div>
 
             {/* Compact Action Button */}

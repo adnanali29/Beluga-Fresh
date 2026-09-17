@@ -3,33 +3,11 @@
 import React from 'react';
 import { Star, Quote, CheckCircle2 } from 'lucide-react';
 
+import { useStore } from '../../context/StoreContext';
+
 export const TestimonialsSection: React.FC = () => {
-  const reviews = [
-    {
-      name: 'Chef Ananya Pillai',
-      role: 'Executive Chef, Malabar Heritage Dining',
-      location: 'Kochi, Kerala',
-      text: 'Beluga Fresh ready-to-cook Avial and Sambar mixes save us over 45 minutes of preparation time during weekend banquets while matching authentic traditional Sadya taste perfectly.',
-      rating: 5,
-      badge: 'Culinary Verified'
-    },
-    {
-      name: 'Marcus Weber',
-      role: 'Import Director, Polymer Tech GmbH',
-      location: 'Frankfurt, Germany',
-      text: 'We import 20MT FCL containers of Beluga RSS 3 Natural Rubber sheets from Cochin Port. Tensile elasticity and smoke cure consistency strictly meet Green Book standards.',
-      rating: 5,
-      badge: 'Export Buyer'
-    },
-    {
-      name: 'Fatima Al-Mansoor',
-      role: 'Spices Distributor',
-      location: 'Dubai, UAE',
-      text: 'The 8mm+ Beluga Pure Green Cardamom pods are incredibly fragrant. Zero artificial green polish or synthetic oils. Our retail clients in UAE love the intense aroma.',
-      rating: 5,
-      badge: 'Bulk Wholesale'
-    }
-  ];
+  const { testimonials } = useStore();
+  const reviews = testimonials;
 
   return (
     <section className="py-16 bg-stone-50 border-b border-stone-200">

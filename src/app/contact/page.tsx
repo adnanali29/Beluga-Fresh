@@ -6,7 +6,7 @@ import { useStore } from '../../context/StoreContext';
 import { MapPin, Phone, Mail, Send } from 'lucide-react';
 
 export default function ContactPage() {
-  const { showToast } = useStore();
+  const { showToast, contactContent } = useStore();
 
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -26,12 +26,7 @@ export default function ContactPage() {
   return (
     <div className="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Page Hero Banner */}
-      <PageHeroBanner
-        categoryTag="REACH OUT"
-        subTag="KERALA SALES DESK"
-        title="Get in Touch with Beluga"
-        description="Have questions about domestic retail shipments, farm produce supply, or bulk container exports? Our team in Kerala is ready to assist."
-      />
+      <PageHeroBanner pageKey="contact" />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
@@ -49,7 +44,7 @@ export default function ContactPage() {
               <MapPin className="w-5 h-5 text-sky-300 shrink-0 mt-0.5" />
               <div>
                 <p className="font-bold text-white">Office & Processing Unit Address:</p>
-                <p className="text-blue-200 mt-0.5">Koratty, Nalukettu po, Thrissur, Kerala</p>
+                <p className="text-blue-200 mt-0.5">{contactContent.officeAddress}</p>
               </div>
             </div>
 
@@ -58,8 +53,8 @@ export default function ContactPage() {
               <div>
                 <p className="font-bold text-white">Telephone & WhatsApp Support:</p>
                 <p className="text-blue-200 mt-0.5">
-                  <span className="font-semibold text-white">India:</span> +91 9567069814<br />
-                  <span className="font-semibold text-white">UAE:</span> +971 562784277
+                  <span className="font-semibold text-white">India:</span> {contactContent.phoneIndia}<br />
+                  <span className="font-semibold text-white">UAE:</span> {contactContent.phoneUAE}
                 </p>
               </div>
             </div>
@@ -69,8 +64,8 @@ export default function ContactPage() {
               <div>
                 <p className="font-bold text-white">Official Email Address:</p>
                 <p className="text-blue-200 mt-0.5">
-                  <a href="mailto:belugaglobalexports@gmail.com" className="hover:underline text-sky-300">
-                    belugaglobalexports@gmail.com
+                  <a href={`mailto:${contactContent.email}`} className="hover:underline text-sky-300">
+                    {contactContent.email}
                   </a>
                 </p>
               </div>
@@ -78,8 +73,8 @@ export default function ContactPage() {
           </div>
 
           <div className="pt-4 border-t border-blue-900/80">
-            <span className="text-[11px] text-blue-200 block">FSSAI Certified: #11324005000128</span>
-            <span className="text-[11px] text-blue-200 block">Rubber Board of India Reg: #RB/KL/EX/2026</span>
+            <span className="text-[11px] text-blue-200 block">FSSAI Certified: {contactContent.fssaiNo}</span>
+            <span className="text-[11px] text-blue-200 block">Rubber Board of India Reg: {contactContent.rubberBoardNo}</span>
           </div>
         </div>
 

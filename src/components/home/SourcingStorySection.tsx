@@ -3,41 +3,39 @@
 import React from 'react';
 import { Sprout, ShieldCheck, Snowflake, PlaneTakeoff, Award, CheckCircle2, Sparkles, ArrowRight } from 'lucide-react';
 
+import { useStore } from '../../context/StoreContext';
+
 export const SourcingStorySection: React.FC = () => {
-  const processSteps = [
-    {
-      step: '01',
-      title: 'Dawn Harvest Sourcing',
-      icon: Sprout,
-      color: 'from-emerald-100 to-teal-50 text-emerald-800 border-emerald-200/80',
-      badgeColor: 'bg-emerald-100 text-emerald-900',
-      description: 'Picked at dawn from smallholder organic farms in Idukki, Wayanad, and Palakkad to lock in natural essential oils and crisp freshness.'
-    },
-    {
-      step: '02',
-      title: 'Hygienic RO Clean-Cuts',
-      icon: ShieldCheck,
-      color: 'from-blue-100 to-cyan-50 text-[#072655] border-blue-200/80',
-      badgeColor: 'bg-blue-100 text-[#072655]',
-      description: 'Triple-stage RO purified water washing and automated uniform vegetable slicing. 100% free from pesticides, dirt, or chemical polish.'
-    },
-    {
-      step: '03',
-      title: 'Chilled Cold-Chain Pack',
-      icon: Snowflake,
-      color: 'from-cyan-100 to-sky-50 text-cyan-800 border-cyan-200/80',
-      badgeColor: 'bg-cyan-100 text-cyan-900',
-      description: 'Sealed in food-grade vacuum pouches under 4°C cold-chain controls. Extends natural shelf life without a single artificial preservative.'
-    },
-    {
-      step: '04',
-      title: 'Domestic & Global Shipping',
-      icon: PlaneTakeoff,
-      color: 'from-indigo-100 to-blue-50 text-indigo-800 border-indigo-200/80',
-      badgeColor: 'bg-indigo-100 text-indigo-900',
-      description: 'Fast refrigerated express dispatch across India and certified FOB/CIF container shipping directly from Cochin Port (COK).'
+  const { journeySteps } = useStore();
+
+  const getStepIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'ShieldCheck':
+        return ShieldCheck;
+      case 'Snowflake':
+        return Snowflake;
+      case 'PlaneTakeoff':
+        return PlaneTakeoff;
+      default:
+        return Sprout;
     }
-  ];
+  };
+
+  const processSteps = journeySteps.map((step, idx) => {
+    const colors = [
+      { color: 'from-emerald-100 to-teal-50 text-emerald-800 border-emerald-200/80', badgeColor: 'bg-emerald-100 text-emerald-900' },
+      { color: 'from-blue-100 to-cyan-50 text-[#072655] border-blue-200/80', badgeColor: 'bg-blue-100 text-[#072655]' },
+      { color: 'from-cyan-100 to-sky-50 text-cyan-800 border-cyan-200/80', badgeColor: 'bg-cyan-100 text-cyan-900' },
+      { color: 'from-indigo-100 to-blue-50 text-indigo-800 border-indigo-200/80', badgeColor: 'bg-indigo-100 text-indigo-900' }
+    ];
+    const c = colors[idx % colors.length];
+    return {
+      ...step,
+      icon: getStepIcon(step.iconName),
+      color: c.color,
+      badgeColor: c.badgeColor
+    };
+  });
 
   const qualityBadges = [
     { label: '100% Farm-Direct Sourcing', detail: 'Zero Middlemen' },
