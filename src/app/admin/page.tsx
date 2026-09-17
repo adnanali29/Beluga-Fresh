@@ -36,7 +36,9 @@ import {
   Upload,
   AlertCircle,
   CheckCircle2,
-  ChevronRight
+  ChevronRight,
+  ShieldCheck,
+  KeyRound
 } from 'lucide-react';
 
 export default function AdminPage() {
@@ -50,7 +52,7 @@ export default function AdminPage() {
 
   // ACTIVE TAB
   const [activeTab, setActiveTab] = useState<
-    'home' | 'spices' | 'veg-fruits' | 'rubber' | 'about' | 'contact'
+    'home' | 'spices' | 'veg-fruits' | 'rubber' | 'about' | 'contact' | 'security'
   >('home');
 
   // Check auth session on load
@@ -63,13 +65,16 @@ export default function AdminPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (loginId.trim() === '1' && loginPassword.trim() === '1') {
+    const savedId = localStorage.getItem('beluga_admin_id') || '1';
+    const savedPwd = localStorage.getItem('beluga_admin_pwd') || '1';
+
+    if (loginId.trim() === savedId && loginPassword.trim() === savedPwd) {
       setIsAuthenticated(true);
       localStorage.setItem('beluga_admin_session', 'true');
       setAuthError(null);
       store.showToast('🔓 Admin login successful!');
     } else {
-      setAuthError('Invalid Credentials');
+      setAuthError('Invalid Admin ID or Password');
     }
   };
 
@@ -198,7 +203,8 @@ export default function AdminPage() {
               { key: 'veg-fruits', label: 'Veg & Fruits Catalog', icon: Leaf, count: store.products.filter(p => p.navCategory === 'veg-fruits').length },
               { key: 'rubber', label: 'Natural Rubber Catalog', icon: Factory, count: store.products.filter(p => p.navCategory === 'rubber').length },
               { key: 'about', label: 'About Page', icon: Info, count: store.aboutContent.pillars.length },
-              { key: 'contact', label: 'Contact Desk Details', icon: Phone, count: 1 }
+              { key: 'contact', label: 'Contact Desk Details', icon: Phone, count: 1 },
+              { key: 'security', label: 'Security & Access', icon: ShieldCheck, count: '🔒' }
             ].map(item => {
               const IconComp = item.icon;
               const active = activeTab === item.key;
@@ -282,7 +288,9 @@ export default function AdminPage() {
                 ? 'Natural Rubber Catalog'
                 : activeTab === 'about'
                 ? 'About Page Content'
-                : 'Contact Information'}
+                : activeTab === 'contact'
+                ? 'Contact Information'
+                : 'Security & Access Control'}
             </h1>
           </div>
 
@@ -378,6 +386,13 @@ export default function AdminPage() {
               handleFileUpload={handleFileUpload}
             />
             <ContactDetailsEditor />
+          </div>
+        )}
+
+        {/* TAB 7: SECURITY */}
+        {activeTab === 'security' && (
+          <div className="space-y-10">
+            <SecuritySettingsSection />
           </div>
         )}
 
@@ -2182,6 +2197,169 @@ function ContactDetailsEditor() {
         >
           <Save className="w-4 h-4" />
           <span>Save Contact Information</span>
+        </button>
+      </form>
+    </div>
+  );
+}
+
+// 7. Security & Credentials Settings Editor
+function SecuritySettingsSection() {
+  const store = useStore();
+  const [currentAdminId, setCurrentAdminId] = useState<string>('1');
+  const [currentAdminPwd, setCurrentAdminPwd] = useState<string>('1');
+
+  useEffect(() => {
+    const savedId = localStorage.getItem('beluga_admin_id') || '1';
+    const savedPwd = localStorage.getItem('beluga_admin_pwd') || '1';
+    setCurrentAdminId(savedId);
+    setCurrentAdminPwd(savedPwd);
+  }, []);
+
+  const [verifyPassword, setVerifyPassword] = useState<string>('');
+  const [newAdminId, setNewAdminId] = useState<string>('');
+  const [newPassword, setNewPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const [secError, setSecError] = useState<string | null>(null);
+  const [secSuccess, setSecSuccess] = useState<string | null>(null);
+
+  useEffect(() => {
+    setNewAdminId(currentAdminId);
+  }, [currentAdminId]);
+
+  const handleSaveSecurity = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSecError(null);
+    setSecSuccess(null);
+
+    if (verifyPassword !== currentAdminPwd) {
+      setSecError('Current password verification failed. Please enter your correct current password.');
+      return;
+    }
+
+    if (!newAdminId.trim()) {
+      setSecError('Admin User ID cannot be empty.');
+      return;
+    }
+
+    if (newPassword && newPassword !== confirmPassword) {
+      setSecError('New Password and Confirm Password do not match.');
+      return;
+    }
+
+    const updatedId = newAdminId.trim();
+    const updatedPwd = newPassword ? newPassword.trim() : currentAdminPwd;
+
+    localStorage.setItem('beluga_admin_id', updatedId);
+    localStorage.setItem('beluga_admin_pwd', updatedPwd);
+
+    setCurrentAdminId(updatedId);
+    setCurrentAdminPwd(updatedPwd);
+
+    setVerifyPassword('');
+    setNewPassword('');
+    setConfirmPassword('');
+    setSecSuccess('✅ Security credentials updated successfully!');
+    store.showToast('🔐 Login ID and Password updated!');
+  };
+
+  return (
+    <div className="bg-white border border-stone-200 rounded-3xl p-6 lg:p-8 space-y-6 shadow-sm">
+      <div className="border-b border-stone-100 pb-4 flex items-center justify-between flex-wrap gap-3">
+        <div>
+          <h2 className="text-xl font-black text-stone-900 flex items-center gap-2">
+            <ShieldCheck className="w-5 h-5 text-[#072655]" />
+            <span>Admin Security & Access Credentials</span>
+          </h2>
+          <p className="text-xs text-stone-500">Change your login Admin User ID and Password securely.</p>
+        </div>
+        <span className="bg-emerald-100 text-emerald-900 text-[10px] font-bold px-3 py-1 rounded-full border border-emerald-300">
+          🔒 Active Protection
+        </span>
+      </div>
+
+      {secError && (
+        <div className="bg-rose-50 border border-rose-200 text-rose-700 text-xs p-3.5 rounded-xl flex items-center gap-2 font-bold">
+          <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
+          <span>{secError}</span>
+        </div>
+      )}
+
+      {secSuccess && (
+        <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs p-3.5 rounded-xl flex items-center gap-2 font-bold">
+          <CheckCircle2 className="w-4 h-4 shrink-0 text-emerald-600" />
+          <span>{secSuccess}</span>
+        </div>
+      )}
+
+      <form onSubmit={handleSaveSecurity} className="space-y-4 text-xs max-w-xl">
+        <div className="bg-stone-50 p-4 sm:p-5 rounded-2xl border border-stone-200 space-y-3">
+          <h4 className="font-bold text-stone-900 text-xs flex items-center gap-1.5">
+            <KeyRound className="w-4 h-4 text-[#072655]" />
+            <span>Step 1: Verify Current Authorization</span>
+          </h4>
+          <div>
+            <label className="block text-stone-700 font-bold mb-1">
+              Current Password <span className="text-rose-600">*</span>
+            </label>
+            <input
+              type="password"
+              required
+              value={verifyPassword}
+              onChange={e => setVerifyPassword(e.target.value)}
+              placeholder="Enter current password to authorize changes"
+              className="w-full bg-white border border-stone-300 rounded-xl p-3 text-stone-900 outline-none font-mono text-xs"
+            />
+          </div>
+        </div>
+
+        <div className="bg-stone-50 p-4 sm:p-5 rounded-2xl border border-stone-200 space-y-4">
+          <h4 className="font-bold text-stone-900 text-xs flex items-center gap-1.5">
+            <Lock className="w-4 h-4 text-emerald-700" />
+            <span>Step 2: Define New Credentials</span>
+          </h4>
+          <div>
+            <label className="block text-stone-700 font-bold mb-1">New Admin User ID</label>
+            <input
+              type="text"
+              required
+              value={newAdminId}
+              onChange={e => setNewAdminId(e.target.value)}
+              placeholder="Admin User ID"
+              className="w-full bg-white border border-stone-300 rounded-xl p-3 text-stone-900 outline-none font-mono text-xs font-bold"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-stone-700 font-bold mb-1">New Password</label>
+              <input
+                type="password"
+                value={newPassword}
+                onChange={e => setNewPassword(e.target.value)}
+                placeholder="Leave blank to keep current"
+                className="w-full bg-white border border-stone-300 rounded-xl p-3 text-stone-900 outline-none font-mono text-xs"
+              />
+            </div>
+            <div>
+              <label className="block text-stone-700 font-bold mb-1">Confirm New Password</label>
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={e => setConfirmPassword(e.target.value)}
+                placeholder="Re-enter new password"
+                className="w-full bg-white border border-stone-300 rounded-xl p-3 text-stone-900 outline-none font-mono text-xs"
+              />
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          className="bg-[#072655] hover:bg-[#0b3574] text-white font-bold px-6 py-3 rounded-xl flex items-center gap-2 cursor-pointer shadow-md transition text-xs"
+        >
+          <Save className="w-4 h-4" />
+          <span>Update Security Credentials</span>
         </button>
       </form>
     </div>
